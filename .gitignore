@@ -1,0 +1,95 @@
+# Visual Studio
+.vscode/
+*.code-workspace
+
+#remove to push code
+main.cpp
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific folders
+.vscode/
+.vs/
+_ReSharper*/
+*_ReSharper.Caches
+.idea/
+*.sln.ide/
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Ll]ogFile.txt
+[Ll]ogFiles/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Uncomment if you have tasks that create the project's static library
+*.lib
+*.dll
+
+# Uncomment if you have tasks that create the project's object files
+*.obj
+
+# Uncomment if you have tasks that create the project's executable
+*.exe
+
+# Uncomment if you have tasks that create the project's debug files
+*.pdb
+
+# Uncomment if you have tasks that create the project's intermediate files
+*.ilk
+
+# Uncomment if you have tasks that create the project's listing files
+*.lst
+
+# Uncomment if you have tasks that create the project's precompiled headers
+*.pch
+*.gch
+
+# Uncomment if you have tasks that create the project's resource files
+*.res
+
+# Uncomment if you have tasks that create the project's compiler response files
+*.rsp
+
+# VS Code directories
+.vscode/
+
+# CMake build
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Miscellaneous
+*.log
+*.tlog
+*.vscode
