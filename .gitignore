@@ -2,8 +2,8 @@
 .vscode/
 *.code-workspace
 
-#remove to push code
-main.cpp
+#pushati samo kada sigurno radi
+#main.cpp
 
 # User-specific files
 *.rsuser

@@ -133,8 +133,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="drawing.cpp" />
+    <ClCompile Include="events.cpp" />
+    <ClCompile Include="init.cpp" />
+    <ClCompile Include="init.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenGlDino.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="drawing.h" />
+    <ClInclude Include="events.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
