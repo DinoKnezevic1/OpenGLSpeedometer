@@ -22,13 +22,11 @@ void circle(int x, int y, int r);
 void print(int x, int y, const char* string, void* font);
 void vprint(int x, int y, void* font, const char* string, ...);
 void vprint2(int x, int y, float size, const char* string, ...);
-void draw_circle_wire(float x, float y, float r);
-void draw_inner_circle_wire(float x, float y, float r);
-void draw_lines(float x, float y, float r);
-void draw_nums(float x, float y, float r);
-void calculate_indicator(float x, float y, float r);
-void draw_indicator(float x, float y, float r);
-void draw_speed_info(float x, float y);
-void draw_speed_arc(float x, float y, float r);
+void DrawCircleSpeedometer(float x, float y, float r);
+void DrawSpeedLines(float x, float y, float r);
+void DrawSpeedValues(float x, float y, float r);
+void CalculateNeedle(float x, float y, float r);
+void DrawNeeedle(float x, float y, float r);
+void DrawSpeedLabels(float x, float y);
 
 #endif // UTILS_H

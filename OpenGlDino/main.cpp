@@ -8,10 +8,10 @@
 // Global Variables
 bool running = true;
 rect_t rectangle = { 0 };
-int winWidth = WINDOW_WIDTH, winHeight = WINDOW_HEIGHT; // Add these lines
-bool up = false, down = false, left = false, right = false; // Add these lines
+int winWidth = WINDOW_WIDTH, winHeight = WINDOW_HEIGHT;
+bool up = false, down = false, left = false, right = false;
 
-void display();
+void RenderDisplay();
 
 int main(int argc, char* argv[]) {
     glutInit(&argc, argv);
@@ -22,13 +22,13 @@ int main(int argc, char* argv[]) {
     glewInit();
 
     // Register callback functions
-    glutDisplayFunc(display);
+    glutDisplayFunc(RenderDisplay);
     glutReshapeFunc(onResize);
     glutKeyboardFunc(onKeyDown);
     glutSpecialFunc(onSpecialKeyDown);
     glutKeyboardUpFunc(onKeyUp);
     glutSpecialUpFunc(onSpecialKeyUp);
-    glutMouseFunc(onClick); // Ensure this is registered
+    glutMouseFunc(onClick); 
     glutMotionFunc(onMoveDown);
     glutPassiveMotionFunc(onMove);
 

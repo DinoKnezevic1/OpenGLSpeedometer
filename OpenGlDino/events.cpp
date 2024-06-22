@@ -2,7 +2,6 @@
 #include <GL/freeglut.h>
 #include "events.h"
 #include "drawing.h"
-#include <vector>
 #include "utils.h"
 #include "constants.h"
 
@@ -10,7 +9,6 @@ extern bool running;
 extern rect_t rectangle;
 extern int winWidth, winHeight;
 extern bool up, down, left, right;
-extern std::vector<int> speedHistory; 
 
 void onKeyDown(unsigned char key, int x, int y) {
     if (key == 27) exit(0);
@@ -60,6 +58,7 @@ void onClick(int button, int stat, int x, int y) {
     glutPostRedisplay();
 }
 
+
 void onResize(int w, int h) {
     winWidth = w;
     winHeight = h;
@@ -69,7 +68,7 @@ void onResize(int w, int h) {
     glOrtho(-w / 2, w / 2, -h / 2, h / 2, -1, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    display();
+    RenderDisplay();
 }
 
 void onMoveDown(int x, int y) {
@@ -90,12 +89,6 @@ void onTimer(int v) {
         }
         else if (!up && rectangle.angle >= 4) {
             rectangle.angle -= 4;
-        }
-
-        // Update speed history
-        speedHistory.push_back(rectangle.angle);
-        if (speedHistory.size() > maxHistorySize) {
-            speedHistory.erase(speedHistory.begin());
         }
     }
 
