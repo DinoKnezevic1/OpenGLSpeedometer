@@ -4,7 +4,7 @@
 #include "drawing.h"
 #include "utils.h"
 #include "constants.h"
-
+#include <algorithm>
 extern bool running;
 extern rect_t rectangle;
 extern int winWidth, winHeight;
@@ -79,17 +79,29 @@ void onMove(int x, int y) {
     glutPostRedisplay();
 }
 
+
+float calculateIncrement(bool accelerating, float currentAngle) {
+    if (accelerating) {
+        // simulate acceleration
+        return std::min(8.0f, (316.0f - currentAngle) / 20.0f); 
+    }
+    else {
+        //  simulate deceleration
+        return std::max(-4.0f, -currentAngle / 80.0f); 
+    }
+}
+
+
 #if TIMER_ON == 1
 void onTimer(int v) {
     glutTimerFunc(TIMER_PERIOD, onTimer, 0);
 
     if (running) {
-        if (up && rectangle.angle <= 316) {
-            rectangle.angle = (rectangle.angle == 316) ? rectangle.angle + 4 : rectangle.angle + 8;
-        }
-        else if (!up && rectangle.angle >= 4) {
-            rectangle.angle -= 4;
-        }
+        float increment = calculateIncrement(up, rectangle.angle);
+        rectangle.angle += increment;
+
+        if (rectangle.angle < 0) rectangle.angle = 0;
+        if (rectangle.angle > 316) rectangle.angle = 316 +60;
     }
 
     glutPostRedisplay();

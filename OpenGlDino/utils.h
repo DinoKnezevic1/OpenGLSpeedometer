@@ -3,7 +3,7 @@
 
 #define WINDOW_WIDTH  800
 #define WINDOW_HEIGHT 800
-#define TIMER_PERIOD  30 // Period for the timer
+#define TIMER_PERIOD  30  // milisekunde
 #define TIMER_ON      1   // 0: disable timer, 1: enable timer
 
 #define D2R 0.0174532
@@ -17,11 +17,9 @@ typedef struct {
     point_t a, b, c, d;
     int angle;
 } rect_t;
+enum class TextType { Bitmap, Stroke };
 
-void circle(int x, int y, int r);
-void print(int x, int y, const char* string, void* font);
-void vprint(int x, int y, void* font, const char* string, ...);
-void vprint2(int x, int y, float size, const char* string, ...);
+void drawText(int x, int y, float size, TextType type, void* font, const char* text);
 void DrawCircleSpeedometer(float x, float y, float r);
 void DrawSpeedLines(float x, float y, float r);
 void DrawSpeedValues(float x, float y, float r);
@@ -29,4 +27,4 @@ void CalculateNeedle(float x, float y, float r);
 void DrawNeeedle(float x, float y, float r);
 void DrawSpeedLabels(float x, float y);
 
-#endif // UTILS_H
+#endif
