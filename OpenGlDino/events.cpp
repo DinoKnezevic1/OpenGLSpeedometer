@@ -68,9 +68,9 @@ float calculateIncrement(bool accelerating, float currentAngle) {
 }
 
 
-#if TIMER_ON == 1
+#if IS_TIMER_ENABLED == 1
 void onTimer(int v) {
-    glutTimerFunc(TIMER_PERIOD, onTimer, 0);
+    glutTimerFunc(PERIOD, onTimer, 0);
 
     if (running) {
         float increment = calculateIncrement(up, needle.speed);

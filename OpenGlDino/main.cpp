@@ -7,14 +7,14 @@
 
 bool running = true;
 needleStruct needle = { 0 };
-int winWidth = WINDOW_WIDTH, winHeight = WINDOW_HEIGHT;
-bool up = false, down = false, left = false, right = false;
+int winWidth = WIDTH, winHeight = HEIGHT;
+bool up = false;
 void RenderDisplay();
 
 int main(int argc, char* argv[]) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-    glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+    glutInitWindowSize(WIDTH, HEIGHT);
     glutCreateWindow("Digital Speedometer");
     glewInit();
     // callback functions
@@ -24,8 +24,8 @@ int main(int argc, char* argv[]) {
     glutSpecialUpFunc(OnKeyDepressed);
     glutDisplayFunc(RenderDisplay);
 
-#if TIMER_ON == 1
-    glutTimerFunc(TIMER_PERIOD, onTimer, 0);
+#if IS_TIMER_ENABLED == 1
+    glutTimerFunc(PERIOD, onTimer, 0);
 #endif
     Init();
     glutMainLoop();
