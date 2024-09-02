@@ -6,36 +6,20 @@
 #include "constants.h"
 #include <algorithm>
 extern bool running;
-extern rect_t rectangle;
+extern needleStruct needle;
 extern int winWidth, winHeight;
-extern bool up, down, left, right;
+extern bool up;
 
-void onKeyDown(unsigned char key, int x, int y) {
-    if (key == 27) exit(0);
-    glutPostRedisplay();
-}
-
-void onKeyUp(unsigned char key, int x, int y) {
-    if (key == 27) exit(0);
-    glutPostRedisplay();
-}
-
-void onSpecialKeyDown(int key, int x, int y) {
+void OnKeyPressed(int key, int x, int y) {
     switch (key) {
     case GLUT_KEY_UP: up = true; break;
-    case GLUT_KEY_DOWN: down = true; break;
-    case GLUT_KEY_LEFT: left = true; break;
-    case GLUT_KEY_RIGHT: right = true; break;
     }
     glutPostRedisplay();
 }
 
-void onSpecialKeyUp(int key, int x, int y) {
+void OnKeyDepressed(int key, int x, int y) {
     switch (key) {
     case GLUT_KEY_UP: up = false; break;
-    case GLUT_KEY_DOWN: down = false; break;
-    case GLUT_KEY_LEFT: left = false; break;
-    case GLUT_KEY_RIGHT: right = false; break;
     }
     glutPostRedisplay();
 }
@@ -71,19 +55,11 @@ void onResize(int w, int h) {
     RenderDisplay();
 }
 
-void onMoveDown(int x, int y) {
-    glutPostRedisplay();
-}
-
-void onMove(int x, int y) {
-    glutPostRedisplay();
-}
-
 
 float calculateIncrement(bool accelerating, float currentAngle) {
     if (accelerating) {
         // simulate acceleration
-        return std::min(8.0f, (316.0f - currentAngle) / 20.0f); 
+        return std::min(8.0f, (180.0f - currentAngle) / 20.0f); 
     }
     else {
         //  simulate deceleration
@@ -97,11 +73,11 @@ void onTimer(int v) {
     glutTimerFunc(TIMER_PERIOD, onTimer, 0);
 
     if (running) {
-        float increment = calculateIncrement(up, rectangle.angle);
-        rectangle.angle += increment;
+        float increment = calculateIncrement(up, needle.speed);
+        needle.speed += increment;
 
-        if (rectangle.angle < 0) rectangle.angle = 0;
-        if (rectangle.angle > 316) rectangle.angle = 316 +60;
+        if (needle.speed < 0) needle.speed = 0;
+        if (needle.speed > 180) needle.speed = 180;
     }
 
     glutPostRedisplay();

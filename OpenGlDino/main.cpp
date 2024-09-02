@@ -6,7 +6,7 @@
 #include "utils.h"
 
 bool running = true;
-rect_t rectangle = { 0 };
+needleStruct needle = { 0 };
 int winWidth = WINDOW_WIDTH, winHeight = WINDOW_HEIGHT;
 bool up = false, down = false, left = false, right = false;
 void RenderDisplay();
@@ -18,15 +18,11 @@ int main(int argc, char* argv[]) {
     glutCreateWindow("Digital Speedometer");
     glewInit();
     // callback functions
-    glutDisplayFunc(RenderDisplay);
     glutReshapeFunc(onResize);
-    glutKeyboardFunc(onKeyDown);
-    glutSpecialFunc(onSpecialKeyDown);
-    glutKeyboardUpFunc(onKeyUp);
-    glutSpecialUpFunc(onSpecialKeyUp);
     glutMouseFunc(onClick); 
-    glutMotionFunc(onMoveDown);
-    glutPassiveMotionFunc(onMove);
+    glutSpecialFunc(OnKeyPressed);
+    glutSpecialUpFunc(OnKeyDepressed);
+    glutDisplayFunc(RenderDisplay);
 
 #if TIMER_ON == 1
     glutTimerFunc(TIMER_PERIOD, onTimer, 0);

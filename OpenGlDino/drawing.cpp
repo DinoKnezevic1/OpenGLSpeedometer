@@ -25,18 +25,17 @@ void DisplayAuthorInformation() {
 }
 
 void DisplaySpeedometerOutline() {
-    DrawCircleSpeedometer(0, 0, 248);
+    DrawCircleSpeedometer(300);
 }
 
 void DisplaySpeedometerSpeedLabels() {
-    DrawSpeedLines(0, 0, 248);
-    DrawSpeedValues(-10, 0, 200);
+    DrawSpeedLines(300);
+    DrawSpeedValues(-15, 0, 255);
 }
 
 void DisplaySpeedNeedle() {
-    CalculateNeedle(0, 0, 248);
-    DrawNeeedle(0, 0, 248);
-    DrawSpeedLabels(-50, -300);
+    DrawNeeedle(300);
+    DrawSpeed(-50, -100);
 }
 
 void DisplayStartStop() {
@@ -65,10 +64,10 @@ void RenderDisplay() {
 
     DrawBackground();
     DisplayAuthorInformation();
-    DisplaySpeedometerOutline();
-    DisplaySpeedometerSpeedLabels();
-    DisplaySpeedNeedle();
     DisplayStartStop(); 
+    DisplaySpeedNeedle();
+    DisplaySpeedometerSpeedLabels();
+    DisplaySpeedometerOutline();
 
     glutSwapBuffers();
 }
